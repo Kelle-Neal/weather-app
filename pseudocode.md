@@ -21,10 +21,9 @@ PSEUDOCODE
 
 ## OBJECTIVES
 
-- Use a single div for the whole application in HTML
+- Use a single div for the whole application in HTML  
   - document.createElement
   - document.appendChild
-
 - Use OpenWeather API to fetch weather data.
 - Use zip code as the user input.
 - Use an onClick or onSubmit to execute an Axios GET request to get weather data from API
@@ -99,62 +98,102 @@ PSEUDOCODE
 
 - Weather App
 
-### PAGES
+## PROCEDURES
 
+- Install Axios
+src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"  
+src="https://unpkg.com/axios@1.1.2/dist/axios.min.js")  
+- Install Bootstrap  
+href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"  
+src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"  
+- Create variables and HTML elements (inner.html)
+- Append all HTML elements to the parent MAIN  
+https://www.w3schools.com/js/js_htmldom.asp  
+https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement  
+  - MAIN Container 
+    - Action Container
+      - App Title - Row
+      - Zip Input - Column x 6
+      - Submit Button - Column x 6
+    - Info Container  
+      - City Label - Row
+      - City Data - Row
+      - Temperature Label - Row
+        - Kelvin - Column x 4
+        - Fahrenheit - Column x 4
+        - Celsius - Column x 4
+      - Condition Label - Row
+      - Condition Data - Row
+      - Other Info Label - Row
+      - Other Info Data - Row
+- Create onClick button with an event handler to start the getWeather function
+  - User enters zip code into field
+  - User clicks on the button
+  - Calls Weather API by Zip
+  (http://api.openweathermap.org/geo/1.0/zip?zip={zip code},{country code}&lang=en&appid={API key})
+    - If zip is invalid return error message and clear zip field
+    - If zip is valid import data from API and clear zip field
+  - When new data is entered into Zip field and submit is entered
+    - Clear Data
+    - Run Get Weather Function
+- Get Weather Function
+  - Get City Data
+    - Take zip entered and get city name (may need to convert to geo codes)
+      - populate HTML element City
+  - Get Temperature Data
+    - populate HTML elements
+      - Kelvin
+      - Fahrenheit
+      - Celsius
+  - Get Condition Data
+    - populate HTML element Condition with the description based on ID code
+  - Get Other Info Data
+    - Get current time (comes over in UTC)
+    - Get timezone for location
+    - Convert UTC time to locations timezone
+    - Determine if it's day or night using sunset and sunrise times
+      - populate Other Info Data with Image determined by ID code
+        - if night use night image
+        - if day use day image
 
-### VARIABLES
+## VARIABLES
 
-##### STATE
+#### AXIOS  
 
-- currentWeather (obj)
-  - city
-  - condition
-  - temp - {} (k,f,c)
-  - image/icon
-- zipCode that got passed in?
-- showConditions: boolean
-- errorMessage
+- baseURL: "https://openweathermap.org/"
+
+#### API IMPORTED VARIABLES
+
+- appid - Unique API key
+- zip - Zip code
+- name - Name of the area found (CITY)
+- country - Country of the the found zip code
+- lat - latitude
+- lon - longitude
+- timezone - Timezone name for the requested location
+- timezone_offset - Shift in seconds from UTC
+- data.dt - Requested time, Unix, UTC
+- data.sunrise - Sunrise time, Unix, UTC
+- data.sunset - Sunset time, Unix, UTC
+- data.temp - Temperature  
+(https://openweathermap.org/api/one-call-3#data)
+  - units
+    - standard - Kelvin
+    - imperial - Fahrenheit
+    - metric - Celsius
+- data.weather  
+(https://openweathermap.org/weather-conditions)
+  - data.weather.id - Weather condition id
+  - data.weather.main - Group of weather parameters (Rain, Snow, Extreme etc.)
+  - data.weather.description - Weather condition within the group
+  - data.weather.icon - Weather icon id. How to get icons
+
+#### HTML
+
+## STATES
+
 
 ## FUNCTIONS
 
-- init()
-- convertTemperature()
-- buildHTML() elements
-  - show city, populate with stat data currentWeather.city
-  - show temperature
-  - change the src of the image tag to the currentWeather.image
-  - populate with API data
-- getData - call the API
-  - Uses Axios to call some endpoint?
-    - .then for success()  
-      - updateState()
-    - .then for state updated
-      - build HTML()
-    - .catch for failure()
-      - handleError()    
-- handleError
-
-## PROCEDURES
-
-- CREATE GETDATA FUNCTION
-
-INIT
-Add a zip code input 
-Add a button
-Add the title of the page
-Add placeholders elements for all the organisms (Temp, City, Conditions)
-         Hide these until submit is pressed
-Bind event handler to the button - getData()
-
-START
-Get Data
-Build the HTML
-Fill the HTML with the Data
-
-
-
-
-### INIT
-
--  
-
+getDate
+getWeather
