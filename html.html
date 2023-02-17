@@ -5,7 +5,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="js/main.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
 
   <body>
@@ -16,31 +18,31 @@
         <primary class="row d-flex justify-content-center">
           <header class="col-12 h1 mx-4">Weather App</header>
           <primary2 class="form-floating col-6">
-            <input type="zipCode" class="form-control" id="floatingInput" placeholder="Zip Code">
-            <label for="floatingInput">Zip Code</label>
+            <input type="zipCode" class="form-control" id="zipCodeInput" placeholder="Zip Code">
+            <label for="zipCodeInput">Zip Code</label>
           </primary2>
           <primary3 class="col-4 mt-2">
-            <button type="submit" class="btn btn-outline-primary">Get Weather</button>
+            <button type="submit" id="sendZip" class="btn btn-outline-primary">Get Weather</button>
           </primary3>  
         </primary>  
       
-        <error class="col-12 d-flex justify-content-center text-danger mt-3 font-italic">Invalid Zip Code, please try again.</error>  
+        <message class="col-12 d-flex justify-content-center text-danger mt-3 font-italic" id="message">Invalid Zip Code, please try again.</message>  
       </action>  
       
       <info class="d-grid container justify-content-center border border-2">
         <secondary class="row border border-info text-center">
           <cityLabel class="col-12 bg-info">City</cityLabel>
-          <cityName class="col-12 border border-info">Lexington</cityName>
+          <city class="col-12 border border-info"id="cityName"></cityName>
           <temperatureLabel class="col-12 bg-info">Temperature</temperatureLabel>
-          <kelvin class="col-4 border border-info">k</kelvin>
-          <fahrenheit class="col-4 border border-info">f</fahrenheit>
-          <celsius class="col-4 border border-info">c</celsius>
+            <temp class="col-4 border border-info" id="kelvin"></temp>
+            <temp class="col-4 border border-info" id="fahrenheit"></temp>
+            <temp class="col-4 border border-info" id="celsius"></temp>
           <conditionLabel class="col-12 bg-info">Weather Conditions</conditionLabel>
-          <condition class="col-12 border border-info">Rainy</condition>
+            <cond class="col-12 border border-info" id="condition"></cond>
           <otherInfoLabel class="col-12 bg-info">Other Info</otherInfoLabel>
-          <conditionImg class="col-12 border border-info">
-            <img src="img/sun.png" alt="Weather Icon"/>
-          </conditionImg>
+            <conditionImg class="col-12 border border-info">
+              <img src="img/sun.png" alt="Weather Icon"/>
+            </conditionImg>
     </main>
 
     <script src="js/main.js"></script>

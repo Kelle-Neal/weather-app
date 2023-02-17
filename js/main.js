@@ -1,44 +1,34 @@
-//create HTML elements
-//const myBody = document.body.innerHTML;
+function getWeather(zip) {
+  const url = "https://api.openweathermap.org/data/2.5/weather?zip=${zip}&us&units=imperial&lang=us&appid=9f901f3fe7c99a6228539bcc88d7e3f2"
+
+const messageElement = document.getElementById("message");
+  messageElement.innerHTML = `Loading...`;
+  messageElement.style.color = "gray";
+
+  axios.get(url)
+    .then(function (response) {
+      document.getElementById("fahrenheit").innerText = `${response.data.main.temp}°F`;
+      document.getElementById("")
+      console.log(response.data.main.temp)
+    })
 
 
-
-const box = document.createElement('div');
-box.id = 'main';
-document.body.appendChild(main);
-
-const form = document.createElement('form');
-form.id = 'form';
-main.appendChild(form);
-
-const input = document.createElement('input');
-input.id = 'zipCode';
-form.appendChild(input);
-
-const button = document.createElement('button');
-button.innerText= 'Get Weather';
-button.id = 'button-1';
-form.appendChild(button);
-
-// const box = document.createElement('div');
-// box.id = 'main';
-// document.body.appendChild(main);
-
-// const box = document.createElement('action');
-// box.id = 'action';
-// ELEMENT_NODE.div.appendChild(action);
+    .catch(function (error) {
+      const MessageElement = document.getELementByID("error");
+      errorElement.innerText = `Invalid Zip Code, please try again.`;
+      errorElement.style.color = "red";
+    })
 
 
-// // const h1 = document.createElement("header");
-// // const textNode = document.createTextNode("header");
-// // h1.appendChild(textNode);
+    .finally(function () {
+      // always executed
+      console.log("All done")
+    });
+  }
 
-// const input = document.createElement("input");
-// input.id = 'ZipCode';
-// ELEMENT_NODE.action.appendChild(input);
-
-
-// const button = document.createElement('button');
-// button.innerText= 'Get Weather';
-// button.id = 'button-1';
-// ELEMENT_NODE.action.appendChild(button);
+  window.onload = function() {
+    document.getELementByID("sendZip").onclick = function() {
+      const zip = document.getElementById("zipCodeInput").value;
+      getWeather(zip);  
+    }
+  }

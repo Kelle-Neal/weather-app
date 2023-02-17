@@ -129,8 +129,8 @@ https://developer.mozilla.org/en-US/docs/Web/API/Document/createElement
 - Create onClick button with an event handler to start the getWeather function
   - User enters zip code into field
   - User clicks on the button
-  - Calls Weather API by Zip
-  (http://api.openweathermap.org/geo/1.0/zip?zip={zip code},{country code}&lang=en&appid={API key})
+  - Calls Weather API by Zip  
+  http://api.openweathermap.org/geo/1.0/zip?zip={zip code},{country code}&lang=en&appid={API key}
     - If zip is invalid return error message and clear zip field
     - If zip is valid import data from API and clear zip field
   - When new data is entered into Zip field and submit is entered
