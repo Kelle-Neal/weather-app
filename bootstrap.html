@@ -14,7 +14,6 @@
     <main class="container border border-3 max-width:300px">
       
       <action class="container text-center px-3 py-3">
-      
         <primary class="row d-flex justify-content-center">
           <header class="col-12 h1 mx-4">Weather App</header>
           <primary2 class="form-floating col-6">
@@ -25,29 +24,28 @@
             <button type="submit" id="sendZip" class="btn btn-outline-primary">Get Weather</button>
           </primary3>  
         </primary>  
-      
-        <message class="col-12 d-flex justify-content-center text-danger mt-3 font-italic" id="message">Invalid Zip Code, please try again.</message>  
+        <message class="col-12 d-flex justify-content-center text-danger mt-3 font-italic" id="message"></message>  
       </action>  
       
       <info class="d-grid container justify-content-center border border-2">
         <secondary class="row border border-info text-center">
           <cityLabel class="col-12 bg-info">City</cityLabel>
-          <city class="col-12 border border-info"id="cityName"></cityName>
+          <city class="col-12 border border-info"id="cityName"></city>
           <temperatureLabel class="col-12 bg-info">Temperature</temperatureLabel>
             <temp class="col-4 border border-info" id="kelvin"></temp>
             <temp class="col-4 border border-info" id="fahrenheit"></temp>
             <temp class="col-4 border border-info" id="celsius"></temp>
           <conditionLabel class="col-12 bg-info">Weather Conditions</conditionLabel>
-            <cond class="col-12 border border-info" id="condition"></cond>
+          <cond class="col-12 border border-info" id="condition"></cond>
           <otherInfoLabel class="col-12 bg-info">Other Info</otherInfoLabel>
-            <conditionImg class="col-12 border border-info">
-              <img src="img/sun.png" alt="Weather Icon"/>
-            </conditionImg>
+          <conditionImg class="col-12 border border-info">
+            <img src="" alt="Weather Icon" id="weatherImg"/>
+           </conditionImg>
     </main>
 
-    <script src="js/main.js"></script>
+    <!-- <script src="js/main.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
-    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios@1.1.2/dist/axios.min.js"></script> -->
   </body>
 </html>
